@@ -19,7 +19,7 @@ from torcheeg.datasets import M3CVDataset, TSUBenckmarkDataset, DEAPDataset, SEE
 from torcheeg import transforms
 from torcheeg.datasets.constants import SEED_CHANNEL_LIST, M3CV_CHANNEL_LIST, TSUBENCHMARK_CHANNEL_LIST
 from torcheeg.datasets import CSVFolderDataset
-from torchaudio.transforms import Resample
+# from torchaudio.transforms import Resample
 
 # ------------------- PhysioMI
 data_root_path = "./io_root/"
@@ -234,20 +234,26 @@ if __name__=="__main__":
     import tqdm
     
     for tag in ["PhysioNetMI", "tsu_benchmark", "seed"]: #, "m3cv"
-        if tag == "PhysioNetMI":
-            dataset = get_physionet_dataset()
-        elif tag == "tsu_benchmark":
-            dataset = get_TSU_dataset()
-        elif tag == "m3cv":
-            dataset = get_M3CV_dataset()
-        elif tag == "seed":
-            dataset = get_SEED_dataset()
-        else:
-            raise ValueError("Invalid tag")
+        # if tag == "PhysioNetMI":
+        #     dataset = get_physionet_dataset()
+        # elif tag == "tsu_benchmark":
+        #     dataset = get_TSU_dataset()
+        # elif tag == "m3cv":
+        #     dataset = get_M3CV_dataset()
+        # elif tag == "seed":
+        #     dataset = get_SEED_dataset()
+        # else:
+        #     raise ValueError("Invalid tag")
+        dataset = get_physionet_dataset()
         print(len(dataset))
         print(dataset[0][0].shape)
         print(dataset[0][0].min(),dataset[0][0].max(), dataset[0][0].mean(),dataset[0][0].std())
+
+        sample_limit = 3
         for i, (x,y) in tqdm.tqdm(enumerate(dataset)):
+            if i >= sample_limit:
+                break
+
             dst="./merged/"
             if random.random()<0.1:
                 dst+="ValidFolder/0/"

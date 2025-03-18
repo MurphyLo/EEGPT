@@ -1,0 +1,14 @@
+# 首先忽略目标文件夹中的所有内容
+/datasets/pretrain/*
+
+# 然后排除你想要跟踪的特定文件
+!/datasets/pretrain/readme.md
+!/datasets/pretrain/prepare_pretrain_dataset.py
+
+
+**/__pycache__
+.cursorignore
+.idea
+.vscode
+
+checkpoint
