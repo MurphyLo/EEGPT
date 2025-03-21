@@ -1,0 +1,19 @@
+# Add directories or file patterns to ignore during indexing (e.g. foo/ or *.csv)
+/datasets/pretrain/*
+/datasets/downstream/*
+
+/.idea
+/.cursorignore
+/.vscode
+
+# 然后排除你想要跟踪的特定文件
+!/datasets/pretrain/readme.md
+!/datasets/pretrain/prepare_pretrain_dataset.py
+!/datasets/downstream/Modules
+!/datasets/downstream/*.py
+
+**/*.pt
+**/*.pth
+**/*.ckpt
+
+**/__pycache__
